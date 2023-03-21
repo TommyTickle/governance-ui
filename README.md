@@ -3,18 +3,18 @@
 ## To set this up for development with Switchboard, the first step is to get [this](https://github.com/switchboard-xyz/switchboard-core/blob/main/switchboard_v2/tests/addin-tests.ts) to work.
 
 - [Install Anchor](https://www.anchor-lang.com/docs/installation) if you don't currently have it installed.
-- navigate to the `switchboard_v2` directory within `switchboard-core` and run `anchor test`. This will build switchboardv2 and run the addin-tests.ts script, which will set up a realm, governance, queue, oracles, permissions, and proposal.
-- you will need to make sure the pubkeys of the governance program and switchboard program throughout the codebase are pointed to your local pubkeys of those programs:
-- you can determine the pubkeys of the localnet switchboardv2 and governance programs by navigating to `switchboard-core/switchboard_v2/target/deploy` and running `solana-keygen pubkey switchboard_v2-keypair.json` and `solana-keygen pubkey spl_governance-keypair.json` respectively
+- Navigate to the `switchboard_v2` directory within `switchboard-core` and run `anchor test`. This will build switchboardv2 and run the addin-tests.ts script, which will set up a realm, governance, queue, oracles, permissions, and proposal.
+- You will need to make sure the pubkeys of the governance program and switchboard program throughout the codebase are pointed to your local pubkeys of those programs:
+- You can determine the pubkeys of the localnet switchboardv2 and governance programs by navigating to `switchboard-core/switchboard_v2/target/deploy` and running `solana-keygen pubkey switchboard_v2-keypair.json` and `solana-keygen pubkey spl_governance-keypair.json` respectively.
 - You'll need to set the `declare_id!(...)` in Switchboardv2's `lib.rs` to point at your localnet switchboard program's pubkey, and you'll need to set Switchboardv2's `lib.rs` `GOVERNANCE_PID` variable to the spl_governance pubkey.
-- you'll also need to ensure that `sbv2.ts` variable GOVERNANCE_PID points at the correct pubkey for your localnet governance program
-- when you want to run the UI, start a local validator by running `solana-test-validator`. This will created a directory called `test-ledger` in the location you run the command.
-- run the addin test suite, `anchor test`
-- start the governance-ui by running `yarn dev`
+- You'll also need to ensure that `sbv2.ts` variable GOVERNANCE_PID points at the correct pubkey for your localnet governance program.
+- When you want to run the UI, start a local validator by running `solana-test-validator`. This will created a directory called `test-ledger` in the location you run the command.
+- Run the addin test suite, `anchor test`.
+- Start the governance-ui by running `yarn dev`.
 
 ## Working on governance-ui
 
-- most of the work is in `hooks/useRealm.ts` and `hooks/useVotingPlugins.ts` in the governance-ui. The UI work is in `components/TokenBalance`
+- Most of the work is in `hooks/useRealm.ts` and `hooks/useVotingPlugins.ts` in the governance-ui. The UI work is in `components/TokenBalance`.
 
 ## Changing dependencies
 Whenever you change dependencies (adding, removing, or updating, either in package.json or yarn.lock), there are various files that must be kept up-to-date.
@@ -27,7 +27,7 @@ The `allow-scripts` configuration in `package.json`:
 - Run `yarn allow-scripts auto` to update the `allow-scripts` configuration automatically. This config determines whether the package's install/postinstall scripts are allowed to run.
 - Alternatively update the `allow-scripts` section manually. 
 - Review each new package to determine whether the install script needs to run or not, testing if necessary.
-- Use `npx can-i-ignore-scripts` to help assessing whether scripts are needed
+- Use `npx can-i-ignore-scripts` to help assessing whether scripts are needed.
 
 # NextJS Typescript Boilerplate
 
